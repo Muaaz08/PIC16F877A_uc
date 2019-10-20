@@ -18,8 +18,16 @@ void main()
          i++;
        }
      }
-     UART1_Write_Text(rfid);
+     // Check For Errors
+     if((rfid[0] ^ rfid[2] ^ rfid[4] ^ rfid[6] ^ rfid[8] == rfid[10]) && (rfid[1] ^ rfid[3] ^ rfid[5] ^ rfid[7] ^ rfid[9] == rfid[11]))
+     {
+      UART1_Write_Text(rfid);
+     }
+     else
+     {
+      UART1_Write_Text("ERROR");
+     }
    }
 
- }
+} 
 }
